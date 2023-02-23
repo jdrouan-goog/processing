@@ -1,13 +1,9 @@
 Dodecacube cube;
-DoMath math;
 
 void setup() {
   size(500, 500);
   cube = new Dodecacube();
   printHelp();
-
-  math = new DoMath();
-  math.doMath();
 }
 
 void draw() {
