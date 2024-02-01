@@ -1,15 +1,15 @@
 import java.util.Random; //<>//
 
 color[] colorMap = {
-  color(0, 0, 0),
-  color(255, 255, 255),
-  color(255, 255, 0),
-  color(255, 0, 0),
-  color(0, 0, 255),
-  color(255, 0, 255),
-  color(0, 255, 255),
-  color(0, 255, 0),
-  color(127, 127, 127)
+  color(255, 255, 255), // white
+  color(0, 0, 255), // blue
+  color(0, 255, 255), // cyan
+  color(0, 255, 0), // gren
+  color(0, 0, 0), // black
+  color(255, 255, 0), // yellow
+  color(255, 0, 255), // magenta
+  color(255, 0, 0), // red
+  color(127, 127, 127) // grey
 };
 
 int n = 4; // Number of states (max = colorMap size)
@@ -23,7 +23,7 @@ int rows;
 
 void setup() {
   size(800, 600);
-  //frameRate(10);
+  //frameRate(30);
 
   cols = width/w;
   rows = height/h;
@@ -53,6 +53,8 @@ void draw() {
   }
 
   cells = newCells;
+//  if (frameCount % 1000 == 1) saveFrame();
+  if (frameCount > 9999) noLoop();
 }
 
 int calculateState(int i, int j) {
@@ -86,5 +88,5 @@ int calculateState(int i, int j) {
 }
 
 void mouseClicked() {
-  loop();
+  //saveFrame();
 }
