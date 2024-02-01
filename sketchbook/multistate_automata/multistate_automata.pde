@@ -12,10 +12,10 @@ color[] colorMap = {
   color(127, 127, 127)
 };
 
-int n = 3; // Number of states (max = colorMap size)
+int n = 4; // Number of states (max = colorMap size)
 
-int w = 20;
-int h = 20;
+int w = 1;
+int h = 1;
 
 int[][] cells;
 int cols;
@@ -23,7 +23,7 @@ int rows;
 
 void setup() {
   size(800, 600);
-  frameRate(2);
+  //frameRate(10);
 
   cols = width/w;
   rows = height/h;
@@ -73,18 +73,16 @@ int calculateState(int i, int j) {
   };
 
   int defender = cells[i][j];
-  int ret = defender;
   int hits = 0;
-  
-  for (int neighbor: neighbors) {
-    if
 
+  for (int neighbor : neighbors) {
+    if ((n + defender - neighbor) % n == n - 1) {
+      hits++;
+    }
+    if (hits > 2) return neighbor;
+  }
 
-
-
-
-
-  return ret;
+  return defender;
 }
 
 void mouseClicked() {
