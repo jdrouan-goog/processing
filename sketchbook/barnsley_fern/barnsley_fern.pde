@@ -1,24 +1,24 @@
-////------------ barnsley fern ------------//
-//String demoName = "barnsley_fern";
-//float[][] F = {
-//  {  0.00,  0.00,  0.00, 0.16, 0.00, 0.00 },
-//  {  0.85,  0.04, -0.04, 0.85, 0.00, 1.60 },
-//  {  0.20, -0.26,  0.23, 0.22, 0.00, 1.60 },
-//  { -0.15,  0.28,  0.26, 0.24, 0.00, 0.44 }
-//};
-//float[] P = { 0.01, 0.85, 0.07 }; // P[3] is implied to be whatever makes it add up to 1.
-//float[] R = { -2.2, 2.7, 0, 10 }; // The range (minX, maxX, minY, maxY).
-
-//------------ modified pinnae ------------//
-String demoName = "modified_pinnae";
+//------------ barnsley fern ------------//
+String demoName = "barnsley_fern";
 float[][] F = {
-  {  0.000, 0.000, 0.000, 0.200, 0.00, -0.12 },
-  {  0.845, 0.035, -0.035, 0.820, 0.00, 1.60 },
-  {  0.200, -0.310, 0.255, 0.245, 0.00, 0.29 },
-  { -0.150, 0.240, 0.250, 0.200, 0.00, 0.68 }
+  {  0.00,  0.00,  0.00, 0.16, 0.00, 0.00 },
+  {  0.85,  0.04, -0.04, 0.85, 0.00, 1.60 },
+  {  0.20, -0.26,  0.23, 0.22, 0.00, 1.60 },
+  { -0.15,  0.28,  0.26, 0.24, 0.00, 0.44 }
 };
-float[] P = { 0.01, 0.85, 0.07 };
-float[] R = { -2.35, 1.92, -0.11, 8.54 };
+float[] P = { 0.01, 0.85, 0.07 }; // P[3] is implied to be whatever makes it add up to 1.
+float[] R = { -2.2, 2.7, 0, 10 }; // The range (minX, maxX, minY, maxY).
+
+////------------ modified pinnae ------------//
+//String demoName = "modified_pinnae";
+//float[][] F = {
+//  {  0.000, 0.000, 0.000, 0.200, 0.00, -0.12 },
+//  {  0.845, 0.035, -0.035, 0.820, 0.00, 1.60 },
+//  {  0.200, -0.310, 0.255, 0.245, 0.00, 0.29 },
+//  { -0.150, 0.240, 0.250, 0.200, 0.00, 0.68 }
+//};
+//float[] P = { 0.01, 0.85, 0.07 };
+//float[] R = { -2.35, 1.92, -0.11, 8.54 };
 
 //------------ culcita_fern ------------//
 //String demoName = "culcita_fern";
@@ -56,7 +56,7 @@ float[] R = { -2.35, 1.92, -0.11, 8.54 };
 //float[] P = { 0.02, 0.84, 0.07 };
 //float[] R = { -1.45, 1.45, -0.50, 7 };
 
-int speed = 500; // Number of iterations per frame
+int speed = 250; // Number of iterations per frame
 int iterations = 250000;
 int iterCount = 0;
 
@@ -75,14 +75,15 @@ void draw() {
     updatePoint();
   }
 
-  if (frameCount % 100 == 0) {
-    String formatted = String.format("%06d", iterCount);
-    String fileName = "data/" + demoName + "_" + formatted + "_iters.png";
-    save(fileName);
-    println("Wrote file: " + fileName);
-  }
+  //if (frameCount % 100 == 0) {
+  //  String formatted = String.format("%06d", iterCount);
+  //  String fileName = "data/" + demoName + "_" + formatted + "_iters.png";
+  //  save(fileName);
+  //  println("Wrote file: " + fileName);
+  //}
 
   if (iterCount >= iterations) {
+    println("done!");
     noLoop();
   }
 }

@@ -1,30 +1,63 @@
-int N = 20;
+int N = 12;
 Nail[] nails;
 ArrayList<Integer> nailsToDraw;
-CircleCanvas canvas;
+CircleCanvas targetImage;
 PImage inputImg;
+PGraphics pg0;
+CircleCanvas s0can;
 
 void setup() {
-  size(440, 440);
-  inputImg = loadImage("data/arch.tif");
+  size(800, 800);
 
-  float buffer = 50;
+  //targetImage = loadTargetImage("data/mookie.png");
+
+  float buffer = 0;
   float radius = width/2 - buffer;
-
   //setUpNails(N, radius);
+  setUpBaseNails(N, radius);
 
-  canvas = new CircleCanvas(inputImg, radius, buffer, (radius / 100));
+  //int targetImageSize = targetImage.circlePx.size();
+
+  pg0 = createGraphics(width, height);
+
+
+
+
+  stroke(0);
+  //strokeWeight(4);
+  //for (int i = 0; i < nails.length; i++) {
+  //  Nail ni = nails[i];
+  //  point(ni.x, ni.y);
+  //}
+
+  Nail n0 = nails[4];
+  Nail n1 = nails[6];
+  pg0.beginDraw();
+  pg0.strokeWeight(100);
+  pg0.line(n0.x, n0.y, n1.x, n1.y);
+  println(n0.x + ";" + n0.y + ";" + n1.x + ";" + n1.y);
+  pg0.endDraw();
+
+  s0can = new CircleCanvas(pg0, radius, buffer, (radius / 8));
+
+
+
+
+  //println(targetImageSize);
 
   background(255);
 }
 
 void draw() {
-  if (nailsToDraw != null) {
-    drawTheString();
-  } else {
-    canvas.preview();
-    noLoop();
-  }
+  //if (nailsToDraw != null) {
+  //  drawTheString();
+  //} else {
+  //  targetImage.preview();
+  //  noLoop();
+  //}
+
+  image(pg0, 0, 0);
+  //s0can.preview();
   //image(inputImg, 0, 0);
   noLoop();
   //loadPixels();
@@ -37,6 +70,21 @@ void draw() {
   //  }
   //}
   //updatePixels();
+  //save("data/test_img_with_blur.tif");
+  //for (PseudoPixel px : targetImage.circlePx) {
+  //  println(px.value);
+  //}
+}
+
+CircleCanvas loadTargetImage(String filename) {
+  inputImg = loadImage(filename);
+  inputImg.filter(GRAY);
+  inputImg.filter(BLUR);
+
+  float buffer = 0;
+  float radius = width/2 - buffer;
+
+  return new CircleCanvas(inputImg, radius, buffer, (radius / 8));
 }
 
 void setUpNails(int n, float r) {
